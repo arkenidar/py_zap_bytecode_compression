@@ -1,0 +1,12 @@
+#source.zsc (zap source code)
+
+#// program: NOT gate emulation
+#instruction_type prog_not[] =	{
+#	{ {PATHSEL,	IN},	{2,	1}	},
+#	{ {OUT,		ZERO},	{0,	0}	},
+#	{ {OUT,		ONE},	{0,	0}	}
+#};
+
+-PATHSEL,	-IN,	2,	1	# READ PATHSEL
+-OUT,		-ZERO,	0,	0	# PRINT ZERO FOR CASE ONE
+-OUT,		-ONE,	0,	0	# PRINT ONE FOR CASE ZERO

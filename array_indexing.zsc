@@ -1,0 +1,35 @@
+#source.zsc (zap source code)
+
+#// program: array
+#instruction_type prog_array[] =	{
+#	{ {0,		IN},	{1,	1} 	}, // 0) read x
+#	{ {1,		IN},	{2,	2} 	}, // 1) read i.0
+#	{ {2,		IN},	{3,	3} 	}, // 2) read i.1
+#	{ {PATHSEL,	1},	{4,	5} 	}, // 3) first level path separation
+#	{ {PATHSEL,	2},	{6,	7}	}, // 4) second level path separation
+#	{ {PATHSEL,	2},	{8,	9}	}, // 5) second level path separation
+#	{ {3,		0}, 	{10,	10}	}, // 6) a[0] = x (a[i]=x with i=0)
+#	{ {4,		0}, 	{10,	10}	}, // 7) a[1] = x (a[i]=x with i=1)
+#	{ {5,		0}, 	{10,	10}	}, // 8) a[2] = x (a[i]=x with i=2)
+#	{ {6,		0}, 	{10,	10}	}, // 9) a[3] = x (a[i]=x with i=3)
+#	{ {OUT,		3}, 	{11,	11}	}, // 10) print a[0]
+#	{ {OUT,		4}, 	{12,	12}	}, // 11) print a[1]
+#	{ {OUT,		5}, 	{13,	13}	}, // 12) print a[2]
+#	{ {OUT,		6}, 	{0,	0}	}, // 13) print a[3]
+#};
+
+# program: array
+0, -IN, 1, 1      # 0) read x
+1, -IN, 2, 2      # 1) read i.0
+2, -IN, 3, 3      # 2) read i.1
+-PATHSEL, 1, 4, 5 # 3) first level path separation
+-PATHSEL, 2, 6, 7 # 4) second level path separation
+-PATHSEL, 2, 8, 9 # 5) second level path separation
+3, 0, 10, 10      # 6) a[0] = x (a[i]=x with i=0)
+4, 0, 10, 10      # 7) a[1] = x (a[i]=x with i=1)
+5, 0, 10, 10      # 8) a[2] = x (a[i]=x with i=2)
+6, 0, 10, 10      # 9) a[3] = x (a[i]=x with i=3)
+-OUT, 3, 11, 11    # 10) print a[0]
+-OUT, 4, 12, 12    # 11) print a[1]
+-OUT, 5, 13, 13    # 12) print a[2]
+-OUT, 6, 0, 0      # 13) print a[3]
