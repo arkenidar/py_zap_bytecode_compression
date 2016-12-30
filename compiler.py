@@ -23,7 +23,7 @@ print('opened bytecode file:', bytecode)
 
 # fields size specs
 address_bytes_count=1
-instruction_bytes_count=2
+instruction_bytes_count=1
 field_sizes = {0:address_bytes_count, 1:address_bytes_count, 2:instruction_bytes_count, 3:instruction_bytes_count}
 
 # mapping
@@ -50,7 +50,7 @@ field1_not_ok=['OUT']
 
 #############
 
-ofp.write(bytes(field_sizes.values()))
+#ofp.write(bytes(field_sizes.values()))
 
 for line in ifp:
 	line=line.rstrip("\n")
@@ -62,6 +62,8 @@ for line in ifp:
 	if(['']==fields): continue
 	if(len(fields)!=4):
 		error('not 4')
+		if(len(fields)==3):
+			fields.append(fields[2])
 		continue
 	try:
 		def convert(i, field):

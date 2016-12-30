@@ -14,7 +14,7 @@ except FileNotFoundError:
 print('opened bytecode file:', bytecode_filepath)
 
 # fields size specs
-fsize = [int(size) for size in bytecode_fp.read(4)]
+fsize = [1,1,1,1]#[int(size) for size in bytecode_fp.read(4)]
 tsize=sum(fsize)
 print(fsize)
 
